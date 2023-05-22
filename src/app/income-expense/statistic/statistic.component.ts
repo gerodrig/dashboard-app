@@ -8,7 +8,7 @@ import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 import { IncomeExpense } from './../../models/income-expense.model';
-import { AppState } from 'src/app/app.reducer';
+import { AppStateWithIncomeExpense } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-statistic',
@@ -60,7 +60,7 @@ export class StatisticComponent implements OnInit {
     console.log(event, active);
   }
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppStateWithIncomeExpense>) { }
 
   ngOnInit(): void {
       this.storeSubscription = this.store.select('incomeExpense').subscribe(({items}) => this.createStatistics(items));

@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanMatchFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 
-export const authGuard: CanActivateFn = (): Observable<boolean> => {
+export const AuthGuard: CanMatchFn = (): Observable<boolean> => {
   const service = inject(AuthService);
   const router = inject(Router);
 
@@ -12,6 +12,7 @@ export const authGuard: CanActivateFn = (): Observable<boolean> => {
       if (!state) {
         router.navigate(['/login']);
       }
-    })
+    }),
+    take(1)
   );
 };

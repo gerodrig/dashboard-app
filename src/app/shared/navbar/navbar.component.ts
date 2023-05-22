@@ -13,7 +13,7 @@ import { User } from 'src/app/models/user.model';
   styles: [],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  user!: User;
+  user?: User;
   storeSubscription: Subscription = new Subscription();
 
   constructor(private store: Store<AppState>) {}

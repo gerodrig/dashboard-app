@@ -23,7 +23,7 @@ import { User } from 'src/app/models/user.model';
   ],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  user!: User;
+  user?: User;
 
   authSubscription: Subscription = new Subscription();
 

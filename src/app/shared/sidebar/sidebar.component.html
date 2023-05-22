@@ -9,9 +9,9 @@
             </div>
             
             <div class="text-wrapper">
-              <p class="profile-name">{{ user.name | capitalize }}</p>
+              <p class="profile-name">{{ user?.name ?? 'User' | capitalize }}</p>
               <div>
-                <small class="designation text-muted">{{user.email}}</small>
+                <small class="designation text-muted">{{user?.email}}</small>
               </div>
             </div>
           </div>

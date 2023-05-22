@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { IncomeExpense } from '../../models/income-expense.model';
-import { AppState } from 'src/app/app.reducer';
 import Swal from 'sweetalert2';
+import { AppStateWithIncomeExpense } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-detail',
@@ -19,7 +19,7 @@ export class DetailComponent implements OnInit {
   storeSubscription: Subscription = new Subscription();
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppStateWithIncomeExpense>,
     private incomeExpenseService: IncomeExpenseService
   ) {}
 

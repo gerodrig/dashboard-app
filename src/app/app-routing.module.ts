@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { dashboardRoutes } from './dashboard/dashboard.routes';
-import { authGuard } from 'src/app/services/auth.guard';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
+    //Lazy load
     path: '',
-    component: DashboardComponent,
-    children: dashboardRoutes,
-    canActivate: [authGuard],
+    canMatch: [AuthGuard],
+    loadChildren: () =>
+      import('./income-expense/income-expense.module').then(
+        (m) => m.IncomeExpenseModule
+      ),
   },
   { path: '**', redirectTo: '' },
 
