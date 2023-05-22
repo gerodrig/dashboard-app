@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { AppState } from 'src/app/app.reducer';
 import * as ui from '../../shared/ui.actions';
 
-import { AuthService } from 'src/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 

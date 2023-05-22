@@ -10,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 
+//ng2-charts
+import { NgChartsModule } from 'ng2-charts';
+
 //Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -31,6 +34,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { OrderItemsPipe } from './pipes/order-items.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    CapitalizePipe,
+    OrderItemsPipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -55,6 +62,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

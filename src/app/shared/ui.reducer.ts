@@ -2,12 +2,12 @@ import { createReducer, on, type Action } from '@ngrx/store';
 import * as actions from './ui.actions';
 
 
-export interface UiState {
+export interface State {
     isLoading: boolean;
     stopLoading: boolean;
 }
 
-export const initialState: UiState = {
+export const initialState: State = {
     isLoading: false,
     stopLoading: false
 }
@@ -17,6 +17,6 @@ const _uiReducer = createReducer(initialState,
     on(actions.stopLoading, state => ({ ...state, isLoading: false }))
 );
 
-export function uiReducer(state: UiState | undefined, action: Action) {
+export function reducer(state: State | undefined, action: Action) {
     return _uiReducer(state, action);
 }

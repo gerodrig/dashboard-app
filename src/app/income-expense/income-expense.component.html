@@ -7,11 +7,12 @@
               Specify the amount and type
             </p>
 
-            <form>
+            <form [formGroup]="incomeForm"(ngSubmit)="save()">
               
               <div class="form-group">
                 <label>Description</label>
-                <input type="text" 
+              <input type="text" 
+                      formControlName="description"
                        class="form-control" 
                        placeholder="Description"
                        name="description">
@@ -20,6 +21,7 @@
               <div class="form-group">
                   <label>Amount</label>
                   <input type="number" 
+                          formControlName="amount"
                          class="form-control" 
                          placeholder="Amount"
                          name="amount">
@@ -31,14 +33,34 @@
               <div class="form-group">
                   <label>Type</label>
                   <br>
-                  <button type="button" class="btn btn-primary btn-block">Income</button>
-                  <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+                  <button
+                    type="button"
+                    *ngIf="type === 'income'"
+                    (click)="toggleType()"
+                    class="btn btn-primary btn-block">Income</button>
+                  <button
+                    type="button"
+                    *ngIf="type === 'expense'"
+                    (click)="toggleType()"
+                    class="btn btn-warning btn-block">Expense</button>
               </div>
 
               <hr>
-              <button type="button" class="btn btn-success mr-2">
+              <button
+                type="submit"
+                *ngIf="!isLoading"
+                [disabled]="incomeForm.invalid"
+                class="btn btn-success mr-2">
                 <i class="fa fa-save"></i>
                 Add
+              </button>
+              <button
+                type="button"
+                *ngIf="isLoading"
+                [disabled]="true"
+                class="btn btn-success mr-2">
+                <i class="fa fa-spin fa-sync"></i>
+                ..Saving
               </button>
 
               <!-- 

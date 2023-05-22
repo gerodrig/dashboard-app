@@ -9,7 +9,7 @@ import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import * as ui from '../../shared/ui.actions';
 
-import { AuthService } from 'src/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.authService
       .createUser(name, email, password)
       .then((cred) => {
-        console.log(cred);
+        // console.log(cred);
         this.store.dispatch(ui.stopLoading());
         // Swal.close();
         this.router.navigate(['/']);
